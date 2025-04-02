@@ -1,0 +1,3 @@
+include README.md
+include LICENSE
+recursive-include practical_ai_azure_keyvault *.py

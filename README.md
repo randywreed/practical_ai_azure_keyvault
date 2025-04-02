@@ -2,78 +2,77 @@
 
 A Python package for managing Azure OpenAI configuration and authentication using Azure Key Vault.
 
-## Installation
+## Directory Structure
 
-You can install this package directly from GitHub:
-
-```bash
-pip install git+https://github.com/yourusername/practical_ai_azure_keyvault.git
+Your project should follow this structure for proper installation:
+```
+practical_ai_azure_keyvault/
+├── practical_ai_azure_keyvault/
+│   ├── __init__.py
+│   └── azure_keyvault.py
+├── setup.py
+├── pyproject.toml
+└── README.md
 ```
 
-Replace `yourusername` with your GitHub username.
+## Installation
+
+### From Git Repository
+```bash
+# Make sure to use the correct GitHub URL
+pip install git+https://github.com/randyreeder/practical_ai_azure_keyvault.git
+```
+
+### For Development
+```bash
+git clone https://github.com/yourusername/practical_ai_azure_keyvault.git
+cd practical_ai_azure_keyvault
+pip install -e .
+```
 
 ## Usage
 
-### Initialization
-
-To use the package, you need to initialize the configuration by specifying the Key Vault name. The package supports multiple authentication methods:
-
-1. **Service Principal Authentication** (Recommended for automated server-to-server authentication)
-2. **Environment Variables** (For local development)
-3. **Device Code Authentication** (Interactive login for development)
-
-Here is an example of how to initialize the configuration:
-
+### Basic Usage
 ```python
-from practical_ai_azure_keyvault import initialize_app
+from practical_ai_azure_keyvault import initialize_app, AIConfig
 
-# Specify the Key Vault name
+# Initialize with your Key Vault name
 initialize_app("YourKeyVaultName")
+
+# Access the configuration
+config = AIConfig()
+print(f"Endpoint: {config.endpoint}")
 ```
 
-### Environment Variables
+### Authentication Methods
 
-Set the following environment variables based on your preferred authentication method:
+The package supports three authentication methods in order of preference:
 
-#### Service Principal Authentication
+1. **Service Principal Authentication** (for automated processes)
 ```bash
 export AZURE_CLIENT_ID="your-client-id"
 export AZURE_CLIENT_SECRET="your-client-secret"
 export AZURE_TENANT_ID="your-tenant-id"
 ```
 
-#### Direct API Access
+2. **Direct API Access** (for local development)
 ```bash
 export AI_API_KEY="your-api-key"
 export AI_ENDPOINT="your-endpoint"
 export AI_VERSION="your-api-version"
 ```
 
-### Key Vault Secrets
+3. **Device Code Authentication** (interactive login)
+- No environment variables needed
+- Follow the prompts in the console
 
-If using Azure Key Vault, ensure the following secrets are stored in your Key Vault:
+### Key Vault Requirements
 
+Your Azure Key Vault should contain these secrets:
 - `AzureOpenAIAPIKey`
 - `AzureOpenAIEndpoint`
 - `AzureOpenAIVersion`
 
-### Example
-
-```python
-from practical_ai_azure_keyvault import AIConfig, initialize_app
-
-# Initialize the configuration with your Key Vault name
-initialize_app("YourKeyVaultName")
-
-# Access the global AIConfig instance
-ai_config = AIConfig()
-
-# Use the configuration
-print(f"API Key: {ai_config.api_key}")
-print(f"Endpoint: {ai_config.endpoint}")
-print(f"API Version: {ai_config.api_version}")
-```
-
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+MIT License
