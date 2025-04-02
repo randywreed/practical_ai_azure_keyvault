@@ -7,7 +7,7 @@ setup(
     author="Randy Reed",
     author_email="reedrw@appstate.edu",
     url="https://github.com/yourusername/practical_ai_azure_keyvault",
-    packages=find_packages(),
+    packages=["practical_ai_azure_keyvault"],  # Explicitly specify the package
     install_requires=[
         "azure-identity",
         "azure-keyvault-secrets",
