@@ -25,7 +25,7 @@ pip install git+https://github.com/randywreed/practical_ai_azure_keyvault.git
 
 ### For Development
 ```bash
-git clone https://github.com/yourusername/practical_ai_azure_keyvault.git
+git clone https://github.com/randywreed/practical_ai_azure_keyvault.git
 cd practical_ai_azure_keyvault
 pip install -e .
 ```
