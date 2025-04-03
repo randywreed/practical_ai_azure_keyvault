@@ -20,7 +20,7 @@ practical_ai_azure_keyvault/
 ### From Git Repository
 ```bash
 # Make sure to use the correct GitHub URL
-pip install git+https://github.com/randyreeder/practical_ai_azure_keyvault.git
+pip install git+https://github.com/randywreed/practical_ai_azure_keyvault.git
 ```
 
 ### For Development
